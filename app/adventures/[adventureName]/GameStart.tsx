@@ -6,7 +6,7 @@ import { Background, Narration, Dialogue, Choice, ReturnHome } from '../game-ui'
 import { GameData } from '@/lib/types'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function GameStart({ gameData }: { gameData: GameData | any }) {
+export default function GameStart({ gameData }: { gameData: GameData }) {
   const [currentScene, setCurrentScene] = useState(gameData.initialScene)
   const [isTransitioning, setIsTransitioning] = useState(false)
 
