@@ -23,10 +23,10 @@ export function Navigation() {
 
     if (signedAccountId) {
       setAction(() => wallet.signOut)
-      setLabel(`(${signedAccountId.slice(0, 8)}...)`)
+      setLabel(signedAccountId)
     } else {
       setAction(() => wallet.signIn)
-      setLabel('Connect NEAR Wallet')
+      setLabel('Connect Wallet')
     }
   }, [signedAccountId, wallet])
   const toggleMenu = () => setIsOpen(!isOpen)
@@ -71,7 +71,7 @@ export function Navigation() {
               className="bg-purple-300 text-black hover:bg-purple-400 disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={!wallet}
             >
-              {label}
+              (Logout) {label}
             </Button>
           </div>
 
@@ -113,10 +113,7 @@ export function Navigation() {
               href="/adventures/new"
               className="block px-3 py-2 rounded-md text-base font-medium"
             >
-              <Button
-                variant="outline"
-                className="w-full border-indigo-400/50 text-white hover:bg-indigo-500/10"
-              >
+              <Button variant="outline" className="w-full border-indigo-400/50">
                 Create Adventure
               </Button>
             </Link>
@@ -124,10 +121,10 @@ export function Navigation() {
               <Button
                 onClick={action}
                 variant="outline"
-                className="w-full border-indigo-400/50 text-white hover:bg-indigo-500/10 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-purple-300 w-full text-black hover:bg-purple-400 disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={!wallet}
               >
-                {label}
+                (Logout) {label}
               </Button>
             </div>
           </div>
