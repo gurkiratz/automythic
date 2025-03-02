@@ -2,13 +2,11 @@
 
 import React, { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { hauntedHollowGame } from './haunted-hollow-game-data'
 import { Background, Narration, Dialogue, Choice, ReturnHome } from '../game-ui'
+import { GameData } from '@/lib/types'
 
-export default function HauntedHollow() {
-  const [currentScene, setCurrentScene] = useState(
-    hauntedHollowGame.initialScene
-  )
+export default function GameStart({ gameData }: { gameData: GameData }) {
+  const [currentScene, setCurrentScene] = useState(gameData.initialScene)
   const [isTransitioning, setIsTransitioning] = useState(false)
 
   const handleChoice = (nextSceneId: string) => {
@@ -19,7 +17,11 @@ export default function HauntedHollow() {
     }, 500)
   }
 
-  const scene = hauntedHollowGame.scenes[currentScene]
+  const scene = gameData.scenes[currentScene]
+
+  if (!gameData) {
+    return <div>No Adventure with this name available</div>
+  }
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
@@ -38,7 +40,7 @@ export default function HauntedHollow() {
           >
             {/* Game Title */}
             <h1 className="text-3xl font-bold text-center text-purple-400 mb-8">
-              {hauntedHollowGame.title}
+              {gameData.title}
             </h1>
 
             {/* Narration */}
@@ -47,8 +49,7 @@ export default function HauntedHollow() {
             {/* Character Dialogues */}
             <div className="space-y-4 mb-8">
               {scene?.dialogues.map((dialogue, index) => {
-                const character =
-                  hauntedHollowGame.characters[dialogue.characterId]
+                const character = gameData.characters[dialogue.characterId]
                 return (
                   <Dialogue
                     key={index}

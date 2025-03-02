@@ -1,22 +1,23 @@
 'use client'
 
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Menu, X, Sword } from 'lucide-react' // Sword as a thematic icon
 import Link from 'next/link'
 import { WalletButton } from './WalletButton'
-
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/adventures/dragons-lair', label: "Dragon's Lair" },
-  { href: '/adventures/haunted-hollow', label: 'Haunted Hollow' },
-]
+import { NearContext } from '@/wallets/near'
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
-
+  const { signedAccountId } = useContext(NearContext)
   const toggleMenu = () => setIsOpen(!isOpen)
-
+  const navLinks = signedAccountId
+    ? [
+        { href: '/', label: 'Home' },
+        { href: '/adventures/dragons-lair', label: "Dragon's Lair" },
+        { href: '/adventures/haunted-hollow', label: 'Haunted Hollow' },
+      ]
+    : []
   return (
     <nav className="fixed w-full bg-black/80 backdrop-blur-sm z-50 border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,7 +59,7 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={toggleMenu}
-              className="text-gray-400 hover:text-white"
+              className="text-gray-400 bg-transparent hover:bg-transparent hover:text-white"
             >
               {isOpen ? (
                 <X className="h-6 w-6" />
