@@ -14,8 +14,7 @@ export function Navigation() {
   const navLinks = signedAccountId
     ? [
         { href: '/', label: 'Home' },
-        { href: '/adventures/dragons-lair', label: "Dragon's Lair" },
-        { href: '/adventures/haunted-hollow', label: 'Haunted Hollow' },
+        { href: '/shop', label: 'Shop' },
       ]
     : []
   return (

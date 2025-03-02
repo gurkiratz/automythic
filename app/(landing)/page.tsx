@@ -85,6 +85,16 @@ export default function Home() {
       {/* Hero Parallax Section */}
       <HeroParallax products={products} />
 
+      {/* Game Showcase */}
+      <section className="container mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-center mb-12">
+          Featured Adventures
+        </h2>
+        <div>
+          <AdventureCarousel />
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="container mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold text-center mb-12">
@@ -98,16 +108,6 @@ export default function Home() {
         >
           <FeaturesSection />
         </motion.div>
-      </section>
-
-      {/* Game Showcase */}
-      <section className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">
-          Featured Adventures
-        </h2>
-        <div>
-          <AdventureCarousel />
-        </div>
       </section>
 
       {/* CTA Section */}

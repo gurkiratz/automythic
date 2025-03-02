@@ -23,20 +23,20 @@ const adventurePreviews = [
     slug: 'dragons-lair',
   },
   {
-    title: 'Starship Odyssey',
-    description:
-      'Navigate a derelict spaceship orbiting a dying star, uncovering alien mysteries.',
-    image:
-      'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    slug: 'starship-odyssey',
-  },
-  {
     title: 'Haunted Hollow',
     description:
       'Explore a cursed forest where shadows whisper and every choice could be your last.',
     image:
       'https://images.unsplash.com/photo-1514539079130-25950c84af65?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     slug: 'haunted-hollow',
+  },
+  {
+    title: 'Starship Odyssey',
+    description:
+      'Navigate a derelict spaceship orbiting a dying star, uncovering alien mysteries.',
+    image:
+      'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2944&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    slug: 'starship-odyssey',
   },
 ]
 
