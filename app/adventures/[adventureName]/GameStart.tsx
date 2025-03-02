@@ -5,7 +5,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Background, Narration, Dialogue, Choice, ReturnHome } from '../game-ui'
 import { GameData } from '@/lib/types'
 
-export default function GameStart({ gameData }: { gameData: GameData }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function GameStart({ gameData }: { gameData: GameData | any }) {
   const [currentScene, setCurrentScene] = useState(gameData.initialScene)
   const [isTransitioning, setIsTransitioning] = useState(false)
 
@@ -26,7 +27,12 @@ export default function GameStart({ gameData }: { gameData: GameData }) {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Background Image */}
-      <Background src={scene?.background} />
+      <Background
+        src={
+          scene?.background ||
+          'https://images.unsplash.com/photo-1558515437-596fa8694e7c?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        }
+      />
 
       {/* Game Content */}
       <div className="relative z-10 container mx-auto max-w-3xl px-4 py-8">

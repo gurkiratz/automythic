@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 
 // import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid'
 import { HeroParallax } from '@/components/ui/hero-parallax'
-import { FeaturesSection } from '@/components/features-section'
+import { FeaturesSection } from '@/app/(landing)/features-section'
 import { AdventureCarousel } from './AdventuresSection'
 import Footer from './Footer'
 

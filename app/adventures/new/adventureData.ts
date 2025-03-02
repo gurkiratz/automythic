@@ -40,3 +40,16 @@ export const adventureData = {
     'Unexpected Ally',
   ],
 }
+
+export type finalAdventureData = {
+  characters: string[]
+  endings: string[]
+  slug: string
+  name: string
+  theme: string
+  goal: string
+  tone: string
+  choices: string[]
+  customCharacters: string
+  customEndings: string
+}

@@ -19,7 +19,7 @@ const adventurePreviews = [
     description:
       'Face the ancient dragon Vermithrax in a cavern of glittering treasure and dark secrets.',
     image:
-      'https://images.unsplash.com/photo-1608924066819-930edc42986a?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1548412576-d92cb3275e23?q=80&w=2948&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     slug: 'dragons-lair',
   },
   {

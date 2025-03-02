@@ -1,6 +1,6 @@
 'use client'
 
-import { use } from 'react'
+import { use, useEffect, useState } from 'react'
 import { dragonLairGame, hauntedHollowGame } from '@/lib/game-data'
 import GameStart from './GameStart'
 
@@ -10,15 +10,39 @@ export default function AdventurePage({
   params: Promise<{ adventureName: string }>
 }) {
   const { adventureName } = use(params)
-  console.log(adventureName)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [gameData, setGameData] = useState<any>(null) // Adjust type based on your GameData
+  const [loading, setLoading] = useState(true)
 
-  // Map adventure name to game data
-  const gameData =
-    adventureName === 'dragons-lair'
-      ? dragonLairGame
-      : adventureName === 'haunted-hollow'
-      ? hauntedHollowGame
-      : null
+  useEffect(() => {
+    const fetchGameData = async () => {
+      try {
+        if (adventureName === 'dragons-lair') {
+          setGameData(dragonLairGame)
+        } else if (adventureName === 'haunted-hollow') {
+          setGameData(hauntedHollowGame)
+        } else {
+          const res = await fetch(`/api/adventures?slug=${adventureName}`)
+          if (!res.ok) throw new Error('Adventure not found')
+          const data = await res.json()
+          setGameData(data)
+        }
+      } catch (error) {
+        console.error(error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchGameData()
+  }, [adventureName])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <p className="text-gray-400">Loading adventure...</p>
+      </div>
+    )
+  }
 
   if (!gameData) {
     return (

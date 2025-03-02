@@ -22,6 +22,9 @@ import {
 import { Checkbox } from '@/components/ui/checkbox'
 import { toast } from 'sonner'
 import { adventureData } from './adventureData'
+import { generateText } from 'ai'
+import { createGoogleGenerativeAI } from '@ai-sdk/google'
+import { env } from '@/lib/env'
 
 export default function NewAdventure() {
   const [formData, setFormData] = useState({
@@ -61,6 +64,11 @@ export default function NewAdventure() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
+  const google = createGoogleGenerativeAI({
+    // custom settings
+    apiKey: env.NEXT_PUBLIC_GOOGLE_API_KEY,
+  })
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!formData.name || !formData.theme || !formData.goal) {
@@ -77,30 +85,151 @@ export default function NewAdventure() {
         .replace(/\s+/g, '-')
         .replace(/[^a-z0-9-]/g, '')
 
-      const finalFormData = {
-        ...formData,
-        characters: formData.customCharacters
-          ? [...formData.characters, formData.customCharacters]
-          : formData.characters,
-        endings: formData.customEndings
-          ? [...formData.endings, formData.customEndings]
-          : formData.endings,
-        slug: adventureSlug,
+      const adventurePrompt = `
+  Create a text-based adventure game with the title "${formData.name}" in the ${
+        formData.theme
+      } genre, Tone/Difficulty: "${formData.tone || 'moderate'}", Main Goal: "${
+        formData.goal
+      }", Endings: "${formData.endings.join(', ') || 'victory, failure'}${
+        formData.customEndings ? ', ' + formData.customEndings : ''
+      }".
+      
+  Based on this user prompt: "${prompt}", 
+  
+  Format your response as a JSON object with the following structure:
+  {
+    "title": "The adventure title",
+    "initialScene": "intro",
+    "characters": {
+      "narrator": {
+        "id": "narrator",
+        "name": "Narrator",
+        "image": "/game-images/narrator.jpg"
+      },
+      // Add other characters as needed
+    },
+    "scenes": {
+      "intro": {
+        "id": "intro",
+        "narration": "A compelling introduction to the adventure setting and premise (about 2-3 paragraphs)",
+        "background": "URL to an image representing the scene",
+        "characters": ["narrator", "character1", "character2"],
+        "dialogues": [
+          {
+            "characterId": "character1",
+            "text": "Dialogue text for character1"
+          },
+          {
+            "characterId": "character2",
+            "text": "Dialogue text for character2"
+          }
+        ],
+        "choices": [
+          {
+            "id": "choice1",
+            "text": "First choice description",
+            "nextSceneId": "scene1"
+          },
+          {
+            "id": "choice2",
+            "text": "Second choice description",
+            "nextSceneId": "scene2"
+          }
+        ]
+      },
+      "scene1": {
+        "id": "scene1",
+        "narration": "Description of what happens after the first choice",
+        "background": "URL to an image representing the scene",
+        "characters": ["narrator", "character1"],
+        "dialogues": [
+          {
+            "characterId": "character1",
+            "text": "Dialogue text for character1"
+          }
+        ],
+        "choices": [
+          {
+            "id": "choice1_1",
+            "text": "Option 1",
+            "nextSceneId": "scene1_1"
+          },
+          {
+            "id": "choice1_2",
+            "text": "Option 2",
+            "nextSceneId": "scene1_2"
+          }
+        ]
+      },
+      // Add more scenes as needed
+    }
+  }
+  
+  Create at least 10 different scenes with meaningful choices that branch the story in different directions.
+  Some scenes should be endings (success or failure) - these won't have choices.
+  Make the adventure engaging, descriptive, and appropriate for the selected theme.
+`
+      // Generate game data with Vercel AI SDK
+      const { text } = await generateText({
+        model: google('gemini-1.5-pro-latest'),
+        prompt: adventurePrompt,
+      })
+
+      console.log(text)
+
+      // Parse the AI response (assuming it returns a stringified GameData)
+
+      let gameData
+      try {
+        // Extract JSON from the response (in case the AI includes extra text)
+        const jsonMatch = text.match(/\{[\s\S]*\}/)
+        if (jsonMatch) {
+          gameData = JSON.parse(jsonMatch[0])
+        } else {
+          throw new Error('No valid JSON found in the response')
+        }
+      } catch (error) {
+        console.error('Failed to parse AI response:', error)
+        throw new Error('Failed to generate a valid adventure structure')
       }
 
+      // Send to API for storage
       const res = await fetch('/api/adventures', {
         method: 'POST',
-        body: JSON.stringify(finalFormData),
+        body: JSON.stringify({ slug: adventureSlug, gameData }),
         headers: { 'Content-Type': 'application/json' },
       })
 
       if (!res.ok) throw new Error('Failed to create adventure')
 
       const { slug } = await res.json()
-      toast('Success', {
-        description: 'Your adventure has been created!',
-      })
+      toast('Success', { description: 'Your adventure has been created!' })
       router.push(`/adventures/${slug}`)
+
+      // const finalFormData = {
+      //   ...formData,
+      //   characters: formData.customCharacters
+      //     ? [...formData.characters, formData.customCharacters]
+      //     : formData.characters,
+      //   endings: formData.customEndings
+      //     ? [...formData.endings, formData.customEndings]
+      //     : formData.endings,
+      //   slug: adventureSlug,
+      // }
+
+      // const res = await fetch('/api/adventures', {
+      //   method: 'POST',
+      //   body: JSON.stringify(finalFormData),
+      //   headers: { 'Content-Type': 'application/json' },
+      // })
+
+      // if (!res.ok) throw new Error('Failed to create adventure')
+
+      // const { slug } = await res.json()
+      // toast('Success', {
+      //   description: 'Your adventure has been created!',
+      // })
+      // router.push(`/adventures/${slug}`)
     } catch (error) {
       console.error(error)
       toast('Error', {
@@ -185,7 +314,7 @@ export default function NewAdventure() {
             </div>
 
             {/* Key Characters */}
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <Label className="text-white">Key Characters (Pick any)</Label>
               <div className="space-y-2">
                 {adventureData.characters.map((char) => (
@@ -216,7 +345,7 @@ export default function NewAdventure() {
                   disabled={isSubmitting}
                 />
               </div>
-            </div>
+            </div> */}
 
             {/* Tone and Difficulty */}
             <div className="space-y-2">

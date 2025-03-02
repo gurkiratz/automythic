@@ -23,7 +23,7 @@ const shopItems = [
     description: 'A stealthy rogue with a knack for secrets.',
     price: 5, // NEAR tokens
     image:
-      'https://images.unsplash.com/photo-1618411640018-97345539f2d9?q=80&w=2940&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1630534325760-4ea18f6227c2?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     id: 'scene-1',
@@ -32,7 +32,7 @@ const shopItems = [
     description: 'A glowing cave filled with ancient runes.',
     price: 3,
     image:
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2940&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1688725906759-ee2576b3d2c9?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     id: 'anim-1',
@@ -41,7 +41,7 @@ const shopItems = [
     description: 'A ghostly fade effect for your choices.',
     price: 2,
     image:
-      'https://images.unsplash.com/photo-1578587018458-e4a8d991d14a?q=80&w=2832&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1614852207293-8ddd724da274?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     id: 'char-2',
@@ -50,7 +50,7 @@ const shopItems = [
     description: 'A fiery sorcerer with explosive power.',
     price: 6,
     image:
-      'https://images.unsplash.com/photo-1652292365691-ac6c678d09df?q=80&w=2027&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1623199971727-c59b8c11fdfd?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
 ]
 
@@ -89,7 +89,7 @@ export default function ShopPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white p-8">
+    <div className="min-h-[80vh] pt-24 bg-black text-white p-8">
       <h1 className="text-4xl font-bold text-purple-400 text-center mb-8">
         Adventure Shop
       </h1>

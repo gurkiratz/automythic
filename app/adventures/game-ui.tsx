@@ -66,7 +66,10 @@ export function Dialogue({ character, text, index }: DialogueProps) {
     >
       <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
         <Image
-          src={character.image}
+          src={
+            character.image ||
+            'https://images.unsplash.com/photo-1562230778-25514c8237f1?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+          }
           alt={character.name}
           fill
           className="object-cover"
