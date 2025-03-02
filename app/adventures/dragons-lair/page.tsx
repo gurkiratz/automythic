@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { dragonLairGame } from './game-data'
-import { Background, Narration, Dialogue, Choice, ReturnHome } from './game-ui'
+import { Background, Narration, Dialogue, Choice, ReturnHome } from '../game-ui'
 
 export default function DragonsLair() {
   const [currentScene, setCurrentScene] = useState(dragonLairGame.initialScene)
@@ -59,7 +59,7 @@ export default function DragonsLair() {
             </div>
 
             {/* Choices */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="flex flex-col gap-4 mt-8">
               {scene?.choices.map((choice) => (
                 <Choice
                   key={choice.id}

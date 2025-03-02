@@ -6,7 +6,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import type { Character } from './game-data'
+import { TextGenerateEffect } from '@/components/text-generate-effect'
+import type { Character } from '@/lib/types'
 
 type BackgroundProps = {
   src: string
@@ -38,8 +39,13 @@ type NarrationProps = {
 
 export function Narration({ text }: NarrationProps) {
   return (
-    <Card className="bg-black/80 p-6 mb-8">
-      <p className="text-lg italic text-gray-300">{text}</p>
+    <Card className="bg-background/60 p-6 mb-8">
+      <TextGenerateEffect
+        words={text}
+        className="font-normal"
+        filter={false}
+        duration={0.8}
+      />
     </Card>
   )
 }
@@ -82,15 +88,30 @@ type ChoiceProps = {
 
 export function Choice({ text, onClick, disabled }: ChoiceProps) {
   return (
-    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+    <motion.div
+      whileHover={{ scale: 1.03 }} // Subtle scale-up on hover
+      whileTap={{ scale: 0.97 }} // Slight press effect
+      initial={{ opacity: 0, y: 10 }} // Gentle entrance
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 25 }} // Smooth spring animation
+      className="w-full"
+    >
       <Button
         onClick={onClick}
-        variant="default"
-        size="lg"
-        className="w-full text-left bg-purple-600 hover:bg-purple-700"
         disabled={disabled}
+        variant="default" // Cleaner, less heavy than "default"
+        className="w-full px-4 py-3 text-base font-medium text-white  border-2  rounded-lg hover:bg-indigo-500/10 border-none transition-colors duration-200 disabled:opacity-40 disabled:hover:bg-transparent disabled:cursor-not-allowed"
       >
-        {text}
+        <div className="flex items-center justify-between w-full">
+          <span className="text-left">{text}</span>
+          <motion.span
+            animate={{ x: [0, 3, 0] }} // Subtle arrow nudge
+            transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+            className="ml-2 text-indigo-300"
+          >
+            →
+          </motion.span>
+        </div>
       </Button>
     </motion.div>
   )

@@ -112,9 +112,11 @@ export const Header = () => {
         blockchain-powered characters and items. Create your own hero, collect
         rare artifacts, and shape your destiny in an ever-expanding universe.
       </p>
-      <button className="mt-8 px-6  py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors">
-        <Link href={'/adventures/dragons-lair'}>Begin Your Journey</Link>
-      </button>
+      <Link href={'/adventures/dragons-lair'} className="cursor-pointer">
+        <button className="mt-8 px-6  py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors">
+          Begin Your Journey
+        </button>
+      </Link>
     </div>
   )
 }
