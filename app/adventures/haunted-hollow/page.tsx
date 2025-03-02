@@ -2,11 +2,13 @@
 
 import React, { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { dragonLairGame } from './dragon-lair-game-data'
+import { hauntedHollowGame } from './haunted-hollow-game-data'
 import { Background, Narration, Dialogue, Choice, ReturnHome } from '../game-ui'
 
-export default function DragonsLair() {
-  const [currentScene, setCurrentScene] = useState(dragonLairGame.initialScene)
+export default function HauntedHollow() {
+  const [currentScene, setCurrentScene] = useState(
+    hauntedHollowGame.initialScene
+  )
   const [isTransitioning, setIsTransitioning] = useState(false)
 
   const handleChoice = (nextSceneId: string) => {
@@ -17,7 +19,7 @@ export default function DragonsLair() {
     }, 500)
   }
 
-  const scene = dragonLairGame.scenes[currentScene]
+  const scene = hauntedHollowGame.scenes[currentScene]
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
@@ -36,7 +38,7 @@ export default function DragonsLair() {
           >
             {/* Game Title */}
             <h1 className="text-3xl font-bold text-center text-purple-400 mb-8">
-              {dragonLairGame.title}
+              {hauntedHollowGame.title}
             </h1>
 
             {/* Narration */}
@@ -46,7 +48,7 @@ export default function DragonsLair() {
             <div className="space-y-4 mb-8">
               {scene?.dialogues.map((dialogue, index) => {
                 const character =
-                  dragonLairGame.characters[dialogue.characterId]
+                  hauntedHollowGame.characters[dialogue.characterId]
                 return (
                   <Dialogue
                     key={index}

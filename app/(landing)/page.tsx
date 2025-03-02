@@ -1,19 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel'
+
 // import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid'
 import { HeroParallax } from '@/components/ui/hero-parallax'
 import { FeaturesSection } from '@/components/features-section'
+import { AdventureCarousel } from './AdventuresSection'
 
 // Sample product data for the HeroParallax component
 const products = [
@@ -111,34 +104,9 @@ export default function Home() {
         <h2 className="text-3xl font-bold text-center mb-12">
           Featured Adventures
         </h2>
-        <Carousel className="w-full max-w-4xl mx-auto">
-          <CarouselContent>
-            {[1, 2, 3].map((_, index) => (
-              <CarouselItem key={index}>
-                <Card className="bg-gray-800/50 border-gray-700">
-                  <CardContent className="p-6">
-                    <div className="aspect-video relative bg-gray-700 rounded-lg mb-4">
-                      <Image
-                        src={`https://images.unsplash.com/photo-1628132908896-2a8fb75bc1b2?q=80&w=2817&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`}
-                        alt={`Game preview ${index + 1}`}
-                        fill
-                        className="object-cover rounded-lg"
-                      />
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">
-                      Epic Adventure {index + 1}
-                    </h3>
-                    <p className="text-gray-400">
-                      Embark on a legendary journey through mystical realms
-                    </p>
-                  </CardContent>
-                </Card>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+        <div>
+          <AdventureCarousel />
+        </div>
       </section>
 
       {/* CTA Section */}
