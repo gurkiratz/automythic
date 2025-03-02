@@ -103,7 +103,7 @@ export const HeroParallax = ({
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
+    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0 z-50">
       <h1 className="text-2xl md:text-7xl font-bold text-white">
         Automythic AI <br /> RPG Adventures
       </h1>
@@ -112,8 +112,8 @@ export const Header = () => {
         blockchain-powered characters and items. Create your own hero, collect
         rare artifacts, and shape your destiny in an ever-expanding universe.
       </p>
-      <button className="mt-8 px-6 z-50 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors">
-        Begin Your Journey
+      <button className="mt-8 px-6  py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors">
+        <Link href={'/adventures/dragons-lair'}>Begin Your Journey</Link>
       </button>
     </div>
   )

@@ -11,8 +11,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
-import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid'
+// import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid'
 import { HeroParallax } from '@/components/ui/hero-parallax'
+import { FeaturesSection } from '@/components/features-section'
 
 // Sample product data for the HeroParallax component
 const products = [
@@ -99,144 +100,9 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          className="bg-black/30 backdrop-blur-sm rounded-xl p-6"
         >
-          <BentoGrid>
-            <BentoGridItem
-              className="col-span-1 md:col-span-2 bg-gradient-to-br from-purple-800/80 to-purple-900/80 border-purple-700/50"
-              title="AI Game Generation"
-              description="Create unique RPG adventures with advanced AI storytelling that adapts to your choices and preferences. Our AI generates immersive worlds with complex characters and engaging storylines."
-              icon={
-                <div className="p-3 rounded-full bg-purple-500/20 w-fit">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-purple-300"
-                  >
-                    <path d="M12 2v8" />
-                    <path d="m4.93 10.93 1.41 1.41" />
-                    <path d="M2 18h2" />
-                    <path d="M20 18h2" />
-                    <path d="m19.07 10.93-1.41 1.41" />
-                    <path d="M22 22H2" />
-                    <path d="m16 6-4 4-4-4" />
-                    <path d="M16 18a4 4 0 0 0-8 0" />
-                  </svg>
-                </div>
-              }
-            />
-            <BentoGridItem
-              className="col-span-1 bg-gradient-to-br from-cyan-800/80 to-cyan-900/80 border-cyan-700/50"
-              title="Blockchain Integration"
-              description="Own your characters and items as NFTs on NEAR blockchain with true digital ownership. Trade, sell, or use your assets across multiple games in the ecosystem."
-              icon={
-                <div className="p-3 rounded-full bg-cyan-500/20 w-fit">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-cyan-300"
-                  >
-                    <rect width="16" height="20" x="4" y="2" rx="2" />
-                    <path d="M16 2v4" />
-                    <path d="M8 2v4" />
-                    <path d="M4 10h16" />
-                    <path d="m9 16 3-3 3 3" />
-                    <path d="M12 13v6" />
-                  </svg>
-                </div>
-              }
-            />
-            <BentoGridItem
-              className="col-span-1 bg-gradient-to-br from-indigo-800/80 to-indigo-900/80 border-indigo-700/50"
-              title="Community Driven"
-              description="Share and play adventures created by the community. Rate stories, collaborate with other creators, and build upon existing worlds."
-              icon={
-                <div className="p-3 rounded-full bg-indigo-500/20 w-fit">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-indigo-300"
-                  >
-                    <path d="M17 7.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11z" />
-                    <path d="M7 7.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11z" />
-                    <path d="M17 7.5V7a4 4 0 0 0-4-4h-2a4 4 0 0 0-4 4v.5" />
-                    <path d="M17 16.5V17a4 4 0 0 1-4 4h-2a4 4 0 0 1-4-4v-.5" />
-                  </svg>
-                </div>
-              }
-            />
-            <BentoGridItem
-              className="col-span-1 md:col-span-2 bg-gradient-to-br from-amber-800/80 to-amber-900/80 border-amber-700/50"
-              title="Cross-Platform Play"
-              description="Play your adventures on any device, anywhere. Seamlessly switch between desktop, mobile, and tablet without losing progress."
-              icon={
-                <div className="p-3 rounded-full bg-amber-500/20 w-fit">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-amber-300"
-                  >
-                    <rect width="16" height="12" x="4" y="2" rx="2" />
-                    <path d="M2 14h20" />
-                    <path d="M6 18h12" />
-                    <path d="M9 22h6" />
-                  </svg>
-                </div>
-              }
-            />
-            <BentoGridItem
-              className="col-span-1 bg-gradient-to-br from-emerald-800/80 to-emerald-900/80 border-emerald-700/50"
-              title="Monetization Options"
-              description="Earn rewards by creating popular adventures or selling unique in-game items. Build your reputation as a master storyteller."
-              icon={
-                <div className="p-3 rounded-full bg-emerald-500/20 w-fit">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-emerald-300"
-                  >
-                    <circle cx="12" cy="12" r="8" />
-                    <path d="M12 6v12" />
-                    <path d="M8 10h8" />
-                  </svg>
-                </div>
-              }
-            />
-          </BentoGrid>
+          <FeaturesSection />
         </motion.div>
       </section>
 
@@ -253,7 +119,7 @@ export default function Home() {
                   <CardContent className="p-6">
                     <div className="aspect-video relative bg-gray-700 rounded-lg mb-4">
                       <Image
-                        src={`/game-preview-${index + 1}.jpg`}
+                        src={`https://images.unsplash.com/photo-1628132908896-2a8fb75bc1b2?q=80&w=2817&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`}
                         alt={`Game preview ${index + 1}`}
                         fill
                         className="object-cover rounded-lg"
@@ -297,6 +163,253 @@ export default function Home() {
           </Button>
         </motion.div>
       </section>
+
+      {/* Footer Section */}
+      <footer className="border-t border-purple-800/30 bg-black/40 backdrop-blur-sm">
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {/* Logo and Description */}
+            <div className="col-span-1 md:col-span-1">
+              <h3 className="text-xl font-bold text-purple-400 mb-4">
+                Automythic AI
+              </h3>
+              <p className="text-gray-400 mb-4">
+                Creating immersive AI-powered RPG adventures with blockchain
+                integration.
+              </p>
+              <div className="flex space-x-4">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-purple-400 transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-purple-400 transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-purple-400 transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect
+                      x="2"
+                      y="2"
+                      width="20"
+                      height="20"
+                      rx="5"
+                      ry="5"
+                    ></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-purple-400 transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div className="col-span-1">
+              <h3 className="text-lg font-semibold text-white mb-4">
+                Quick Links
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-purple-400 transition-colors"
+                  >
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-purple-400 transition-colors"
+                  >
+                    Adventures
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-purple-400 transition-colors"
+                  >
+                    Marketplace
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-purple-400 transition-colors"
+                  >
+                    Community
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-purple-400 transition-colors"
+                  >
+                    About Us
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Resources */}
+            <div className="col-span-1">
+              <h3 className="text-lg font-semibold text-white mb-4">
+                Resources
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-purple-400 transition-colors"
+                  >
+                    Documentation
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-purple-400 transition-colors"
+                  >
+                    API
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-purple-400 transition-colors"
+                  >
+                    Tutorials
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-purple-400 transition-colors"
+                  >
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-purple-400 transition-colors"
+                  >
+                    Support
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Newsletter */}
+            <div className="col-span-1">
+              <h3 className="text-lg font-semibold text-white mb-4">
+                Stay Updated
+              </h3>
+              <p className="text-gray-400 mb-4">
+                Subscribe to our newsletter for the latest updates and
+                adventures.
+              </p>
+              <div className="flex">
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  className="bg-gray-800 text-white px-4 py-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-purple-500 w-full"
+                />
+                <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-r-md transition-colors">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Footer */}
+          <div className="border-t border-purple-800/30 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-500 text-sm mb-4 md:mb-0">
+              © 2025 Automythic AI. All rights reserved.
+            </p>
+            <div className="flex space-x-6">
+              <a
+                href="#"
+                className="text-gray-500 hover:text-purple-400 text-sm transition-colors"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="#"
+                className="text-gray-500 hover:text-purple-400 text-sm transition-colors"
+              >
+                Terms of Service
+              </a>
+              <a
+                href="#"
+                className="text-gray-500 hover:text-purple-400 text-sm transition-colors"
+              >
+                Cookie Policy
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
