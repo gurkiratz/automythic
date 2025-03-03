@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Background, Narration, Dialogue, Choice, ReturnHome } from '../game-ui'
 import { GameData } from '@/lib/types'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function GameStart({ gameData }: { gameData: GameData }) {
   const [currentScene, setCurrentScene] = useState(gameData.initialScene)
   const [isTransitioning, setIsTransitioning] = useState(false)
@@ -25,7 +24,7 @@ export default function GameStart({ gameData }: { gameData: GameData }) {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white overflow-hidden">
       {/* Background Image */}
       <Background
         src={
@@ -35,7 +34,7 @@ export default function GameStart({ gameData }: { gameData: GameData }) {
       />
 
       {/* Game Content */}
-      <div className="relative z-10 container mx-auto max-w-3xl px-4 py-8">
+      <div className="relative z-10 container mx-auto max-w-4xl px-6 py-12">
         <AnimatePresence mode="wait">
           <motion.div
             key={scene?.id}
@@ -43,9 +42,10 @@ export default function GameStart({ gameData }: { gameData: GameData }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
+            className="bg-gray-900/80 backdrop-blur-sm rounded-lg shadow-2xl p-8"
           >
             {/* Game Title */}
-            <h1 className="text-3xl font-bold text-center text-purple-400 mb-8">
+            <h1 className="text-4xl md:text-5xl font-black text-center text-orange-600 mb-8 tracking-tight uppercase drop-shadow-[0_4px_4px_rgba(234,88,12,0.6)]">
               {gameData.title}
             </h1>
 
@@ -53,7 +53,7 @@ export default function GameStart({ gameData }: { gameData: GameData }) {
             <Narration text={scene?.narration} />
 
             {/* Character Dialogues */}
-            <div className="space-y-4 mb-8">
+            <div className="space-y-6 mb-8">
               {scene?.dialogues.map((dialogue, index) => {
                 const character = gameData.characters[dialogue.characterId]
                 return (
