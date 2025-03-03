@@ -15,8 +15,12 @@ export function Navigation() {
     ? [
         { href: '/', label: 'Home' },
         { href: '/shop', label: 'Shop' },
+        { href: '/about', label: 'About' },
       ]
-    : []
+    : [
+        { href: '/', label: 'Home' },
+        { href: '/about', label: 'About' },
+      ]
   return (
     <nav className="fixed w-full bg-black/80 backdrop-blur-sm z-50 border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
